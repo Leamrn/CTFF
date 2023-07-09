@@ -1,0 +1,319 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="C:/Users/User/Documents/Health_informatic/Practice_of_programming/soft-ui-dashboard-main/assets/css/soft-ui-dashboard.css">
+    <title>Créer un nouveau patient</title>
+    <style>
+        body {
+          /*background-image: url("C:Users/User/Documents/Health_informatic/Practice_of_programming/background.png");*/
+          background-color: #c7e0f7;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      </style>
+</head>
+
+  
+<body>
+    <br><br>
+    <img src="{{ url_for('static', filename='logo_CTF.png') }}" style="width: 130px; height: 120px; position: absolute; top: 10px; left: 10px;">
+    <form action="/" id="patientForm" method="POST">
+        <div id="step1">
+            <h2 style="text-align: center;">Personal Informations</h2>
+        <br>
+        <!--<label for="first_name">First name :</label>-->
+        <input type="text" name="first_name" id="first_name" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" First name" class="style-formulaire" required><br><br>
+        <br>
+
+        <!--<label for="last_name">Last name :</label>-->
+        <input type="text" name="last_name" id="last_name" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Last name" required><br><br>
+        <br>
+
+        <!--<label for="gender">Gender :</label>-->
+        <select name="gender" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" First name" id="gender" required>
+            <option value="M">Man</option>
+            <option value="F">Woman</option>
+            <option value="O">Other</option>
+        </select><br><br>
+        
+
+        <label style="text-align:center; position:absolute; left:46%; color: #495057; " for="date_of_birth">Date of birth:</label><br>
+        <input type="date" name="date_of_birth" id="date_of_birth" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Date of birth" required><br><br>
+        <br>
+
+        <!--<label for="email">Email :</label>-->
+        <input type="email" name="email" id="email" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Email" required><br><br>
+        <br>
+
+        <!--<label for="weight">Weight (kg) :</label>-->
+        <input type="number" name="weight" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Weight (Kg)" id="weight" required><br><br> <!-- OBLIGATOIRE OU PAS ????????????????-->
+        <br>
+
+        <!--<label for="height">Height (cm) :</label>-->
+        <input type="number" name="height" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Height (Cm)" id="height"required><br><br> <!-- OBLIGATOIRE OU PAS ????????????????-->
+        
+
+        <!--<label for="op_date_primary_tumor">OP date primary tumor :</label>-->
+        <label style="text-align:center; position:absolute; left:43%; color: #495057; " for="date_of_birth">OP date primary tumor :</label><br>
+        <input type="date" name="op_date_primary_tumor" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" OP date primary tumor" " id="op_date_primary_tumor" required><br><br>
+        <br>
+
+        <!--<label for="age_at_OP">Age at OP :</label>-->
+        <input type="number" name="age_at_OP" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Age at OP" id="age_at_OP" required><br><br>
+        <br>
+
+        <!--<label for="BMI">BMI classification (1.0 or 2.0 or 3.0):</label>-->
+        <input type="number" name="BMI" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder="BMI classification (1.0 or 2.0 or 3.0)" id="BMI"  required><br><br>
+        <br>
+        
+        <button type="button" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 47%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" onclick="nextStep(2)">Next</button>
+    </div>
+
+
+        <div id="step2" style="display: none;">
+        <h2 style="text-align: center;">Medical informations</h2>
+
+        <!--<label for="pre_existing_conditions">Pre-existing conditions :</label>-->
+        <select name="pre_existing_conditions" style=" background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="pre_existing_conditions" required>
+            <option value="yes">Pre-existing conditions</option>
+            <option value="no" selected>No Pre-existing conditions</option>
+        </select><br><br>
+        <br>
+        
+        <!--<label for="cardiac_diseases">Cardiac diseases :</label>-->
+        <select name="cardiac_diseases" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="cardiac_diseases" required>
+
+            <option value="yes">Cardiac diseases</option>
+            <option value="no" selected>No Cardiac diseases</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="pulmonary_diseases">Pulmonary diseases :</label>-->
+        <select name="pulmonary_diseases" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="pulmonary_diseases" required>
+            <option value="yes">Pulmonary diseases</option>
+            <option value="no" selected>No Pulmonary diseases</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="urological_diseases">Urological diseases :</label>-->
+        <select name="urological_diseases" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="urological_diseases" required>
+            <option value="yes">Urological diseases</option>
+            <option value="no"selected>No Urological diseases</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="endocrine_diseases">Endocrine diseases :</label>-->
+        <select name="endocrine_diseases" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="endocrine_diseases" required>
+            <option value="yes">Endocrine diseases</option>
+            <option value="no"selected>No Endocrine diseases</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="previous_vascular_diseases">Previous vascular diseases :</label>-->
+        <select name="previous_vascular_diseases" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="previous_vascular_diseases" required>
+            <option value="yes">Previous vascular diseases</option>
+            <option value="no"selected>No Previous vascular diseases</option>
+        </select><br><br>
+        <br>
+
+        <button type="button" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 47%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" onclick="previousStep(1)">Previous</button>
+        <br>
+        <br>
+        <br>
+        <button type="button" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 48%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" onclick="nextStep(3)">Next</button>
+    </div>
+    
+    <div id="step3" style="display: none;">
+        <h2 style="text-align: center;">About the tumor</h2>
+
+        <!--<label for="tumor_side">Tumor side :</label>-->
+        <select name="tumor_side" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="tumor_side" required>
+            <option value="left">Tumor on the Left side</option>
+            <option value="right">Tumor on the Right side</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="tumor_marker_CEA">Tumor marker CEA :</label>-->
+        <select name="tumor_marker_CEA" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="tumor_marker_CEA" required>
+            <option value="CEA in the normal range">CEA in the normal range</option>
+            <option value="CEA pathologic">CEA pathologic</option>
+            <option value="CEA not determined" selected>CEA not determined</option>
+        </select><br><br>
+        <br>
+        
+        <!--<label for="tumor_marker_CA19_9">Tumor marker CA19_9 :</label>-->
+        <select name="tumor_marker_CA19_9" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="tumor_marker_CA19_9" required>
+            <option value="CA19_9 in the normal range">CA19_9 in the normal range</option>
+            <option value="CA19_9 pathologic">CA19_9 pathologic</option>
+            <option value="CA19_9 not determined" selected>CA19_9 not determined</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="preoperative_endoscopy">Preoperative endoscopy :</label>-->
+        <select name="preoperative_endoscopy" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="preoperative_endoscopy" required>
+            <option value="colonoscopy">Preoperative endoscopy : Colonoscopy</option>
+            <option value="rectoscopy">Preoperative endoscopy : Rectoscopy</option>
+            <option value="n/a">Preoperative endoscopy : n/a</option>
+        </select><br><br>
+        <br>
+        
+        <!--<label for="surgical_procedure">Surgical procedure :</label>-->
+        <select name="surgical_procedure" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="surgical_procedure" required>
+            <option value="open surgery">Surgical procedure : Open surgery</option>
+            <option value="laparoscopy">Surgical procedure : Laparoscopy</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="localization_OP">Localization OP :</label>-->
+        <select name="localization_OP" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="localization_OP" required>
+            <option value="left">Localization OP : Left</option>
+            <option value="right">Localization OP : Right</option>
+        </select><br><br>
+        <br>
+        
+        <!--<label for="T_stadium">T_stadium :</label>-->
+        <select name="T_stadium" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="T_stadium" required>
+            <option value="pT1">T_stadium : pT1</option>
+            <option value="pT2">T_stadium : pT2</option>
+            <option value="pT3">T_stadium : pT3</option>
+            <option value="pT4">T_stadium : pT4</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="N_stadium">N_stadium :</label>-->
+        <select name="N_stadium" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="N_stadium" required>
+            <option value="pN0">N_stadium : pN0</option>
+            <option value="pN1">N_stadium : pN1</option>
+            <option value="pN2">N_stadium : pN2</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="UICC_Stadium">UICC_stadium :</label>-->
+        <select name="UICC_Stadium" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="UICC_Stadium" required>
+            <option value="1">UICC_stadium : 1</option>
+            <option value="2a">UICC_stadium : 2a</option>
+            <option value="2b">UICC_stadium : 2b</option>
+            <option value="2c">UICC_stadium : 2c</option>
+            <option value="3a">UICC_stadium : 3a</option>
+            <option value="3b">UICC_stadium : 3b</option>
+            <option value="3c">UICC_stadium : 3c</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="grading">Grading :</label>-->
+        <select name="grading" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="grading" required>
+            <option value="G1">Grading : G1</option>
+            <option value="G2">Grading : G2</option>
+            <option value="G3">Grading : G3</option>
+            <option value="G4">Grading : G4</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="lymphangiosis_carcinomatous">Lymphangiosis carcinomatous:</label>-->
+        <select name="lymphangiosis_carcinomatous" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="lymphangiosis_carcinomatous" required>
+            <option value="L0">Lymphangiosis carcinomatous: L0</option>
+            <option value="L1">Lymphangiosis carcinomatous: L1</option>
+            <option value="n/a" selected>Lymphangiosis carcinomatous: n/a</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="vascular_invasion">Vascular invasion:</label>-->
+        <select name="vascular_invasion" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="vascular_invasion" required>
+            <option value="V0">Vascular invasion: V0</option>
+            <option value="V1">Vascular invasion: V1</option>
+            <option value="n/a" selected>Vascular invasion: n/a</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="perineural_invasion">Perineural invasion:</label>-->
+        <select name="perineural_invasion" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" id="perineural_invasion" required>
+            <option value="Pn0">Perineural invasion : Pn0</option>
+            <option value="Pn1">Perineural invasion : Pn1</option>
+            <option value="n/a" selected>Perineural invasion : n/a</option>
+        </select><br><br>
+        <br>
+
+        <!--<label for="tumor_diameter_in_cm">Tumor diameter in cm :</label>-->
+        <input type="number" min="0" max="15" step="0.1" name="tumor_diameter_in_cm" style="background-color: white; border: 2px solid Grainsboro; width: 180px; position: absolute; left: 44%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" placeholder="Tumor diameter in cm :" id="tumor_diameter_in_cm" required><br><br>
+        <br>
+        <button type="button" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 47.5%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" onclick="previousStep(2)">Previous</button>
+        <br>
+        <br>
+        <br>
+        <input type="submit" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 45.5%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" value="Find the treatment">
+        <br>
+    </div>
+    </form>
+    <br><br><br>
+    <a style =" position: absolute; left: 45%" href="/admin">Administration's page</a>
+    <br><br>
+</body>
+</html>
+<script>
+    
+
+
+    function nextStep(step) {
+        var form = document.getElementById('patientForm');
+        
+        // Vérifier si tous les champs requis de l'étape actuelle sont remplis
+        var currentStep = document.getElementById('step' + (step - 1));
+        var inputs = currentStep.querySelectorAll('input[required], select[required]');
+        var isValid = true;
+        
+        for (var i = 0; i < inputs.length; i++) {
+            if (!inputs[i].value) {
+                isValid = false;
+                break;
+            }
+        }
+        
+        if (!isValid) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        // Passer à l'étape suivante
+        var currentStep = document.getElementById('step' + (step - 1));
+        currentStep.style.display = 'none';
+        
+        var nextStep = document.getElementById('step' + step);
+        nextStep.style.display = 'block';
+    }
+
+
+    function previousStep(step) {
+        if(step==1)
+        {
+        var currentStep = document.getElementById('step' + step);
+        currentStep.style.display = 'block';
+        
+        var previousStep = document.getElementById('step' + (2));
+        previousStep.style.display = 'none';
+
+        var previousStep2 = document.getElementById('step' + (3));
+        previousStep2.style.display = 'none';
+        }
+        if(step==2)
+        {
+        var currentStep = document.getElementById('step' + step);
+        currentStep.style.display = 'block';
+        
+        var previousStep = document.getElementById('step' + (1));
+        previousStep.style.display = 'none';
+
+        var previousStep2 = document.getElementById('step' + (3));
+        previousStep2.style.display = 'none';
+        }
+
+    }
+
+
+  
+
+
+   
+  </script>

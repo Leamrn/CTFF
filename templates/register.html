@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription Administrateur</title>
+    <style>
+        body {
+          /*background-image: url("C:Users/User/Documents/Health_informatic/Practice_of_programming/background.png");*/
+          background-color: #c7e0f7;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      </style>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='logo_CTF.png') }}" style="width: 130px; height: 120px; position: absolute; top: 10px; left: 10px;">
+    <h2 style="position: absolute; left: 38%; ">Adminstrator's Registration</h2>
+  
+    
+    {% if session.get('is_superuser') or not has_admin() %}
+    <form method="POST" action="/admin/register">
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--<label for="username" style="position : absolute; left : 37%;">Nom d'utilisateur:</label>-->
+        <input type="text" style="width :320px; height: 30px; background-color: white; position: absolute; left: 37%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Username" id="username" name="username" required>
+        <br><br><br>
+
+        <!--<label for="password">Mot de passe:</label>-->
+        <input type="password" style="width :320px; height: 30px; background-color: white; position: absolute; left: 37%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" placeholder=" Password" id="password" name="password" required>
+        <br><br><br>
+
+        
+        <!-- Afficher le champ pour le statut de superutilisateur uniquement si aucun administrateur n'existe -->
+        <label style="position: absolute; left: 37%;" for="is_superuser">SuperUser:</label>
+        {% if not has_admin() %}
+            <input type="checkbox" style="position: absolute; left : 48%;" id="is_superuser" name="is_superuser" checked readonly>
+            <br>
+            
+        {% else %}
+            <input type="checkbox" style="position: absolute; left : 48%;" id="is_superuser" name="is_superuser" checked >
+            <br>
+        {% endif %}
+       
+        <br>
+
+        <input type="submit" style="width :320px; height: 30px; background-color: white; position: absolute; left: 37%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" value="Register">
+    </form>
+    <br>
+{% else %}
+    <p style="text-align: center;">You don't have the authorisation required to add an administrator.</p>
+{% endif %}
+<br>
+<a style="position:absolute; left: 48%;" href="/admin">Back</a> <!--                /////////////////////////////////: -->
+</body>
+</html>
+
+

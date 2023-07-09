@@ -1,0 +1,25 @@
+name: myapp
+location: westus
+type: Microsoft.Web/sites
+apiVersion: 2020-12-01
+properties:
+  siteConfig:
+    appSettings:
+      - name: FLASK_APP
+        value: app.py
+      - name: FLASK_ENV
+        value: production
+      - name: POSTGRES_USER
+        value: myuser
+      - name: POSTGRES_PASSWORD
+        value: mypassword
+      - name: POSTGRES_DB
+        value: mydb
+  containerProperties:
+    image: myregistry.azurecr.io/myimage:latest
+    ports:
+      - port: 5000
+  osType: Linux
+  sku:
+    name: B1
+    tier: Basic

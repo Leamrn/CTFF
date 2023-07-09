@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Liste des administrateurs</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for admin in admins %}
+        <tr>
+          <td>{{ admin.username }}</td>
+          <td>
+            <a href="/admin/edit/{{ admin.id }}">Modifier</a>
+            <form method="post" action="/admin/delete/{{ admin.id }}">
+              <button type="submit">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

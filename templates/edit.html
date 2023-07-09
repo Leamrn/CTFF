@@ -1,0 +1,336 @@
+
+<style>
+    body {
+      /*background-image: url("C:Users/User/Documents/Health_informatic/Practice_of_programming/background.png");*/
+      background-color: #c7e0f7;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+
+{% block content %}
+    <img src="{{ url_for('static', filename='logo_CTF.png') }}" style="width: 130px; height: 120px; position: absolute; top: 10px; left: 10px;">
+
+    <h1 style="text-align: center;">Edit a patient</h1>
+    <form method="POST">
+        <div>
+            <!--<label for="first_name" >First name :</label>-->
+            <br>
+            <input type="text" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="first_name" placeholder="First name" value="{{ patient.first_name }}">
+        </div>
+        <br>
+        <div>
+            <!--<label for="last_name" >Last name :</label>-->
+            <br>
+            <input type="text" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="last_name"  placeholder="Last name" value="{{ patient.last_name }}">
+        </div>
+        <br>
+        <div>
+            <!--<label for="gender">Gender :</label>-->
+            <br>
+            <select name="gender" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}"  placeholder="Gender">
+                <option value="M" {% if patient.gender == 'M' %}selected{% endif %}>Man</option>
+                <option value="F" {% if patient.gender == 'F' %}selected{% endif %}>Woman</option>
+                <option value="O" {% if patient.gender == 'O' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+        <br><br>
+        <div>
+            <label style="text-align:center; position:absolute; left:46%; color: #495057; " for="date_of_birth">Date of birth:</label><br>
+            <input type="date" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="date_of_birth" value="{{ patient.date_of_birth }}">
+        <br>
+        </div>
+        <br>
+        <div>
+            <!--<label for="email">Email :</label>-->
+            <br>
+            <input type="email" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="email" value="{{ patient.email }}">
+        </div>
+        <br>
+        <div>
+            <!--<label for="op_date_primary_tumor">op_date_primary_tumor :</label>-->
+            <br>
+            
+            <label style="text-align:center; position:absolute; left:44%; color: #495057; " for="date_of_birth">Op date primary tumor :</label><br>
+
+            <input type="date" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="op_date_primary_tumor" value="{{ patient.op_date_primary_tumor }}">
+        <br>
+        </div>
+        <br>
+        <div>
+            <!--<label for="age_at_OP">age_at_OP:</label>-->
+            
+            <label style="text-align:center; position:absolute; left:46%; color: #495057; " for="date_of_birth">Age at OP :</label><br>
+
+            <input type="number" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="age_at_OP" value="{{ patient.age_at_OP }}">
+        <br>
+        </div>
+       
+        <br>
+        <div>
+            <!--<label for="BMI">BMI classification:</label>-->
+            
+            <label style="text-align:center; position:absolute; left:44%; color: #495057; " for="date_of_birth">BMI Classification :</label><br>
+
+            <input type="number" min="1" max="3" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="BMI" value="{{ patient.BMI }}">
+        </div>
+        <br>
+        <div>
+            <br>
+            <!--<label for="weight">Weight :</label>-->
+        
+            <label style="text-align:center; position:absolute; left:47%; color: #495057; " for="date_of_birth">Weight :</label><br>
+
+            <input type="number" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="weight" value="{{ patient.weight }}">
+        </div>
+        <br>
+        <div>
+            <br>
+            <!--<label for="height">Height :</label>-->
+            <label style="text-align:center; position:absolute; left:47%; color: #495057; " for="date_of_birth">Height :</label><br>
+
+            <input type="number" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="height" value="{{ patient.height }}">
+       
+        </div>
+        <br>
+        <div>
+            <!--<label for="pre_existing_conditions">Pre-existing conditions :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="pre_existing_conditions">
+                <option value="yes" {% if patient.pre_existing_condition == 'yes' %}selected{% endif %}>Pre-existing conditions</option>
+                <option value="no" {% if patient.pre_existing_condition == 'no' %}selected{% endif %}>No Pre-existing conditions</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="cardiac_diseases">Cardiac diseases :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="cardiac_diseases">
+                <option value="yes" {% if patient.cardiac_diseases == 'yes' %}selected{% endif %}>Cardiac diseases</option>
+                <option value="no" {% if patient.cardiac_diseases == 'no' %}selected{% endif %}>No Cardiac diseases</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="pulmonary_diseases">Pulmonary diseases :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="pulmonary_diseases">
+                <option value="yes" {% if patient.pulmonary_diseases == 'yes' %}selected{% endif %}>Pulmonary diseases</option>
+                <option value="no" {% if patient.pulmonary_diseases == 'no' %}selected{% endif %}>No Pulmonary diseases</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="urological_diseases">Urological_diseases :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="urological_diseases">
+                <option value="yes" {% if patient.urological_diseases == 'yes' %}selected{% endif %}>Urological diseases</option>
+                <option value="no" {% if patient.urological_diseases == 'no' %}selected{% endif %}>No Urological diseases</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="endocrine_diseases">Endocrine diseases :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="endocrine_diseases">
+                <option value="yes" {% if patient.endocrine_diseases == 'yes' %}selected{% endif %}>Endocrine diseases</option>
+                <option value="no" {% if patient.endocrine_diseases == 'no' %}selected{% endif %}>No Endocrine diseases</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="previous_vascular_diseases">Previous vascular diseases :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="previous_vascular_diseases">
+                <option value="yes" {% if patient.previous_vascular_diseases == 'yes' %}selected{% endif %}>Previous vascular diseases</option>
+                <option value="no" {% if patient.previous_vascular_diseases == 'no' %}selected{% endif %}>No Previous vascular diseases</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="tumor_side">Tumor side :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="tumor_side">
+                <option value="left" {% if patient.tumor_side == 'left' %}selected{% endif %}>Tumor side : Left</option>
+                <option value="right" {% if patient.tumor_side == 'right' %}selected{% endif %}>Tumor side : Right</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="tumor_marker_CEA">Tumor marker CEA :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="tumor_marker_CEA">
+                <option value="CEA in the normal range" {% if patient.previous_vascular_diseases == 'CEA in the normal range' %}selected{% endif %}>Tumor marker CEA : in the normal range</option>
+                <option value="CEA pathologic" {% if patient.previous_vascular_diseases == 'CEA pathologic' %}selected{% endif %}>Tumor marker CEA pathologic</option>
+                <option value="CEA not determined" {% if patient.previous_vascular_diseases == 'CEA not determined' %}selected{% endif %}>Tumor marker CEA not determined</option>
+            </select>
+        </div>
+        <br>
+        
+        <div>
+            <!--<label for="tumor_marker_CA19_9">Tumor marker CA19_9 :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="tumor_marker_CA19_9">
+                <option value="CA19_9 in the normal range" {% if patient.previous_vascular_diseases == 'CA19_9 in the normal range' %}selected{% endif %}>Tumor marker CA19_9 in the normal range</option>
+                <option value="CA19_9 pathologic" {% if patient.previous_vascular_diseases == 'CA19_9 pathologic' %}selected{% endif %}>Tumor marker CA19_9 pathologic</option>
+                <option value="CA19_9 not determined" {% if patient.previous_vascular_diseases == 'CA19_9 not determined' %}selected{% endif %}>Tumor marker CA19_9 not determined</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="preoperative_endoscopy">Preoperative endoscopy :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="preoperative_endoscopy">
+                <option value="colonoscopy" {% if patient.previous_vascular_diseases == 'colonoscopy' %}selected{% endif %}>Preoperative endoscopy : colonoscopy</option>
+                <option value="rectoscopy" {% if patient.previous_vascular_diseases == 'rectoscopy' %}selected{% endif %}>Preoperative endoscopy : CEA rectoscopy</option>
+                <option value="n/a" {% if patient.previous_vascular_diseases == 'n/a' %}selected{% endif %}>Preoperative endoscopy : n/a</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="surgical_procedure">Surgical procedure :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="surgical_procedure">
+                <option value="open surgery" {% if patient.previous_vascular_diseases == 'open surgery' %}selected{% endif %}>Surgical procedure : open surgery</option>
+                <option value="laparoscopy" {% if patient.previous_vascular_diseases == 'laparoscopy' %}selected{% endif %}>Surgical procedure : laparoscopy</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="localization_OP">Localization OP :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="localization_OP">
+                <option value="left" {% if patient.previous_vascular_diseases == 'left' %}selected{% endif %}>Localization OP : left</option>
+                <option value="right" {% if patient.previous_vascular_diseases == 'right' %}selected{% endif %}>Localization OP : right</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="T_stadium">T stadium :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="T_stadium">
+                <option value="pT1" {% if patient.previous_vascular_diseases == 'pT1' %}selected{% endif %}>T stadium : pT1</option>
+                <option value="pT2" {% if patient.previous_vascular_diseases == 'pT2' %}selected{% endif %}>T stadium : pT2</option>
+                <option value="pT3" {% if patient.previous_vascular_diseases == 'pT3' %}selected{% endif %}>T stadium : pT3</option>
+                <option value="pT4" {% if patient.previous_vascular_diseases == 'pT4' %}selected{% endif %}>T stadium : pT4</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="N_stadium">N stadium :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="N_stadium">
+                <option value="pN0" {% if patient.previous_vascular_diseases == 'pN0' %}selected{% endif %}>N stadium : pN0</option>
+                <option value="pN1" {% if patient.previous_vascular_diseases == 'pN1' %}selected{% endif %}>N stadium : pN1</option>
+                <option value="pN2" {% if patient.previous_vascular_diseases == 'pN2' %}selected{% endif %}>N stadium : pN2</option>
+                
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="UICC_Stadium">UICC stadium :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="UICC_Stadium">
+                <option value="1" {% if patient.previous_vascular_diseases == '1' %}selected{% endif %}>UICC stadium : 1</option>
+                <option value="2a" {% if patient.previous_vascular_diseases == '2a' %}selected{% endif %}>UICC stadium : 2a</option>
+                <option value="2b" {% if patient.previous_vascular_diseases == '2b' %}selected{% endif %}>UICC stadium : 2b</option>
+                <option value="2c" {% if patient.previous_vascular_diseases == '2c' %}selected{% endif %}>UICC stadium : 2c</option>
+                <option value="3a" {% if patient.previous_vascular_diseases == '3a' %}selected{% endif %}>UICC stadium : 3a</option>
+                <option value="ab" {% if patient.previous_vascular_diseases == '3b' %}selected{% endif %}>UICC stadium : 3b</option>
+                <option value="ac" {% if patient.previous_vascular_diseases == '3c' %}selected{% endif %}>UICC stadium : 3c</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="grading">Grading :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="grading">
+                <option value="G1" {% if patient.previous_vascular_diseases == 'G1' %}selected{% endif %}>G1</option>
+                <option value="G2" {% if patient.previous_vascular_diseases == 'G2' %}selected{% endif %}>G2</option>
+                <option value="G3" {% if patient.previous_vascular_diseases == 'G3' %}selected{% endif %}>G3</option>
+                <option value="G4" {% if patient.previous_vascular_diseases == 'G4' %}selected{% endif %}>G4</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="lymphangiosis_carcinomatous">Lymphangiosis carcinomatous :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="lymphangiosis_carcinomatous">
+                <option value="L0" {% if patient.previous_vascular_diseases == 'L0' %}selected{% endif %}>L0</option>
+                <option value="L1" {% if patient.previous_vascular_diseases == 'L1' %}selected{% endif %}>L1</option>
+                <option value="n/a" {% if patient.previous_vascular_diseases == 'n/a' %}selected{% endif %}>n/a</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="vascular_invasion">Vascular invasion :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="vascular_invasion">
+                <option value="V0" {% if patient.previous_vascular_diseases == 'V0' %}selected{% endif %}>Lymphangiosis carcinomatous : V0</option>
+                <option value="V1" {% if patient.previous_vascular_diseases == 'V1' %}selected{% endif %}>Lymphangiosis carcinomatous : V1</option>
+                <option value="n/a" {% if patient.previous_vascular_diseases == 'n/a' %}selected{% endif %}>Lymphangiosis carcinomatous : n/a</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <!--<label for="perineural_invasion">Perineural invasion :</label>-->
+            <br>
+
+            <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="perineural_invasion">
+                <option value="Pn0" {% if patient.previous_vascular_diseases == 'Pn0' %}selected{% endif %}>Perineural invasion : Pn0</option>
+                <option value="Pn1" {% if patient.previous_vascular_diseases == 'Pn1' %}selected{% endif %}>Perineural invasion : Pn1</option>
+                <option value="n/a" {% if patient.previous_vascular_diseases == 'n/a' %}selected{% endif %}>Perineural invasion : n/a</option>
+            </select>
+        </div>
+        <br>
+        <!--<label for="tumor_diameter_in_cm">Tumor diameter in cm :</label>-->
+        <br>
+
+        <label style="text-align:center; position:absolute; left:44%; color: #495057; " for="date_of_birth">Tumor diameter in cm :</label><br>
+            <input type="number" min="0" step="0.1" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}"  name="tumor_diameter_in_cm" value="{{ patient.tumor_diameter_in_cm }}">
+<br><br>
+<!--<label for="progression_free_survival_in_months">progression_free_survival_in_months :</label>-->
+
+<label style="text-align:center; position:absolute; left:41%; color: #495057; " for="date_of_birth">Progression_free_survival_in_months :</label><br>
+
+            <input type="number" min="0" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="progression_free_survival_in_months" value="{{ patient.progression_free_survival_in_months}}">
+<br>
+<br>
+            <!--<label for="treatment">Treatment:</label>-->
+            
+
+            <label style="text-align:center; position:absolute; left:47%; color: #495057; " for="date_of_birth">Treatment :</label><br>
+
+    <select style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="treatment" id="treatment">
+        <option value="" {% if not patient.treatments %}selected{% endif %}>None</option>
+        {% for treatment in treatments %}
+            <option value="{{ treatment.id }}" {% if treatment in patient.treatments %}selected{% endif %}>
+                {{ treatment.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <br>
+
+        <button style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 46%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" type="submit">Save changes</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+
+
+{% block content %}
+    <style>
+        body {
+        /*background-image: url("C:Users/User/Documents/Health_informatic/Practice_of_programming/background.png");*/
+        background-color: #c7e0f7;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
+    <img src="{{ url_for('static', filename='logo_CTF.png') }}"" style="width: 130px; height: 120px; position: absolute; top: 10px; left: 10px;">
+
+    <h2 style="text-align: center;">Login page</h2>
+    <form action="{{login}}" method="post">
+        <p><input type="text" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="username" placeholder="Username"></p><br><br>
+        <p><input type="password" style="width :320px; height: 30px; background-color: white; position: absolute; left: 39%; border-radius: 20px; border: 1px solid lightgray;  :hover {border: 1px solid rgb(8, 8, 233);}" name="password" placeholder="Password"></p><br><br>
+        <p><input type="submit" style="background-color: white; border: 2px solid Grainsboro; position: absolute; left: 48%; border-radius: 20px; padding: 10px; cursor: pointer; transition: background-color 0.3s ease; :hover {background-color: blue;}" value="Login"></p><br><br>
+    </form>
+{% endblock %}
