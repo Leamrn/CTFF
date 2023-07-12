@@ -4,9 +4,9 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
+* Copyright 2022 Creative Tim 
+* Licensed under MIT 
+* Code modified and created by Nina Peigné  
 
 =========================================================
 
@@ -62,11 +62,9 @@
     <h2 style="margin-left: 15px;">  Administration's page</h2>
     
     <a style="margin-left: 15px;" href="/">Back to the homepage</a>
-    <!--
-    <form action="/admin/delete_all" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <button type="submit">Delete all</button>
-  </form>-->
+
+
+    
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4" style="padding-left:30px;">
           <div class="card">
@@ -225,7 +223,8 @@
                         <th >Action</th>
                         <br>
                       </tr>
-                      
+
+  <!-- In the for loop for, the administrators are displayed one by one, along with their status according to whether they are "normal" or "superuser".-->
                         {% for admin in admins %}
                             <tr>
                                 <td style="text-align: left;">{{ admin.username }} </td>
